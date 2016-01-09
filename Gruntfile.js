@@ -15,6 +15,7 @@ module.exports = function(grunt) {
   ];
 
   grunt.initConfig({
+    distPath: 'assets/build',
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -22,7 +23,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
-        '!assets/build/js/scripts.js',
+        '!<%= distPath %>/js/scripts.js',
         '!assets/**/*.min.*'
       ]
     },
@@ -32,12 +33,12 @@ module.exports = function(grunt) {
       },
       dev: {
         files: {
-          'assets/build/css/main.css': 'assets/scss/main.scss'
+          '<%= distPath %>/css/main.css': 'assets/scss/main.scss'
         }
       },
       build: {
         files: {
-          'assets/build/css/main.min.css': 'assets/scss/main.scss'
+          '<%= distPath %>/css/main.min.css': 'assets/scss/main.scss'
         }
       }
     },
@@ -47,13 +48,13 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [jsFileList],
-        dest: 'assets/build/js/scripts.js',
+        dest: '<%= distPath %>/js/scripts.js',
       },
     },
     uglify: {
       dist: {
         files: {
-          'assets/build/js/scripts.min.js': [jsFileList]
+          '<%= distPath %>/js/scripts.min.js': [jsFileList]
         }
       }
     },
@@ -64,13 +65,13 @@ module.exports = function(grunt) {
       dev: {
         options: {
           map: {
-            prev: 'assets/build/css/'
+            prev: '<%= distPath %>/css/'
           }
         },
-        src: 'assets/build/css/main.css'
+        src: '<%= distPath %>/css/main.css'
       },
       build: {
-        src: 'assets/build/css/main.min.css'
+        src: '<%= distPath %>/css/main.min.css'
       }
     },
     modernizr: {
@@ -79,8 +80,8 @@ module.exports = function(grunt) {
         outputFile: 'assets/js/vendor/modernizr.min.js',
         files: {
           'src': [
-            ['assets/build/js/scripts.min.js'],
-            ['assets/build/css/main.min.css']
+            ['<%= distPath %>/js/scripts.min.js'],
+            ['<%= distPath %>/css/main.min.css']
           ]
         },
         extra: {
@@ -109,7 +110,7 @@ module.exports = function(grunt) {
           server: {
             baseDir: "./"
           },
-          files: ['assets/build/css/main.css', 'assets/build/js/scripts.js', 'index.html'],
+          files: ['<%= distPath %>/css/main.css', '<%= distPath %>/js/scripts.js', 'index.html'],
           watchTask: true
         }
       }
@@ -134,6 +135,14 @@ module.exports = function(grunt) {
           spawn: false
         }
       }
+    },
+    copy: {
+      dist: {
+        files: [
+          { expand: true, src: ['<%= distPath %>/**'], dest: 'dist/', filter: 'isFile' },
+          { src: ['index.html'], dest: 'dist/index.html' },
+        ]
+      }
     }
   });
 
@@ -155,6 +164,8 @@ module.exports = function(grunt) {
     'sass',
     'autoprefixer:build',
     'uglify',
-    'modernizr'
+    'modernizr',
+    'concat',
+    'copy'
   ]);
 };
