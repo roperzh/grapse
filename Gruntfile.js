@@ -7,7 +7,10 @@ module.exports = function(grunt) {
 
   var jsFileList = [
     'assets/vendor/ace-builds/src-noconflict/ace.js',
-    'assets/js/_*.js',
+    'assets/vendor/ace-builds/src-noconflict/theme-chrome.js',
+    'assets/vendor/ace-builds/src-noconflict/mode-javascript.js',
+    'assets/vendor/jroff/dist/jroff.js',
+    'assets/js/**/_*.js',
     'assets/js/main.js'
   ];
 
