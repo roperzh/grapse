@@ -1,0 +1,15 @@
+// -------------------------------------------
+//   Code box
+// -------------------------------------------
+
+.code-box {
+  $border: 1px solid $main-border-color;
+
+  border: $border;
+
+  .code-box-header {
+    padding: 5px 30px 5px;
+
+    border-bottom: $border;
+  }
+}

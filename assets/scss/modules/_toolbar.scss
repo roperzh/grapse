@@ -1,0 +1,10 @@
+// -------------------------------------------
+//   Toolbar
+// -------------------------------------------
+
+.toolbar {
+  $height: $banner-height - 10px;
+
+  height: $height;
+  line-height: $height;
+}

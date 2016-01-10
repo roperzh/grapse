@@ -9,22 +9,23 @@
 @import "../vendor/normalize-scss/_normalize";
 
 // -------------------------------------
-//   Mixins
-// -------------------------------------
-
-// -------------------------------------
 //   Base
 // -------------------------------------
+
+@import "base/variables";
+@import "base/mixins";
+@import "base/defaults";
 
 // -------------------------------------
 //   Layouts
 // -------------------------------------
 
+@import "layouts/banner";
+@import "layouts/live-preview";
+
 // -------------------------------------
 //   Modules
 // -------------------------------------
 
-#editor, #result {
-  width: 50%;
-  height: 550px;
-}
+@import "modules/toolbar";
+@import "modules/code-box";

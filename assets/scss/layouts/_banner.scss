@@ -1,0 +1,12 @@
+// -------------------------------------------
+//   Banner
+// -------------------------------------------
+
+[role="banner"] {
+  background-color: $main-bg-color;
+  height: $banner-height;
+
+  .banner-title {
+    color: white;
+  }
+}

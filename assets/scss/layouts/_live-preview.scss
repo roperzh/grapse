@@ -1,0 +1,27 @@
+// -------------------------------------------
+//   Live preview
+// -------------------------------------------
+
+.live-preview-l {
+  @include clearfix();
+
+  .code-box {
+    margin: 0;
+    width: 50%;
+    float: left;
+
+    overflow: auto;
+
+    #editor, #result {
+      height: calc(100vh - #{$banner-height * 3});
+      width: 100%;
+    }
+  }
+
+  @include breakpoint(small) {
+    .code-box {
+      float: none;
+      width: 100%;
+    }
+  }
+}

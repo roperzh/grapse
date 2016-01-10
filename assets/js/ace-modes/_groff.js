@@ -30,17 +30,17 @@ ace.define('ace/mode/groff_highlight_rules', function(require, exports, module) 
 
   var GroffHighlightRules = function() {
     this.$rules = {
-      'start': [{
+      'start': [ {
+        token: 'comment',
+        regex: '(?:^\.|\\s)\\\\\"[\\s\\S]*$'
+      },{
         token: 'keyword.bold',
         regex: /^\.\S+/,
         next: 'parameter'
-      }, {
-        token: 'comment',
-        regex: '(?:^|\\s)\\\\\"[\\s\\S]*$'
       }],
       'parameter': [{
         token: 'variable',
-        regex: '.+',
+        regex: '[^(?:^\.|\\s)\\\\\"[\\s\\S]*$]',
         next: 'start'
       }]
     };

@@ -1,0 +1,66 @@
+// -------------------------------------------
+//   Breakpoint mixins
+// -------------------------------------------
+
+@mixin breakpoint($point) {
+  @if $point == wide {
+    @media (min-width: 1101px) { @content; }
+  }
+  @else if $point == standard {
+    @media (max-width: 1100px) { @content; }
+  }
+  @else if $point == notsmall {
+    @media (min-width: 767px) { @content; }
+  }
+  @else if $point == small {
+    @media (max-width: 767px)  { @content; }
+  }
+}
+
+// -------------------------------------------
+//   Hide text
+// -------------------------------------------
+
+@mixin hide-text {
+  vertical-align: text-top;
+  text-indent: -1000px;
+  overflow: hidden;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+}
+
+// -------------------------------------------
+//   Reset lists
+// -------------------------------------------
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// -------------------------------------------
+//   Cleafix hack
+// -------------------------------------------
+
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+// -------------------------------------------
+//   Container
+// -------------------------------------------
+
+// @mixin container {
+//   @include clearfix();
+
+//   margin: 0 auto;
+//   max-width: $container-width;
+// }
