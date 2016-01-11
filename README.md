@@ -21,3 +21,13 @@ $ npm install
 $ bower install
 $ grunt
 ```
+### Deployment
+
+In order to deploy, commit and push all your changes on the master
+branch, and then run
+
+```bash
+$ npm run deploy
+```
+
+Voilà!
