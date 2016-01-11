@@ -10,8 +10,11 @@ module.exports = function(grunt) {
     'assets/vendor/ace-builds/src-noconflict/theme-chrome.js',
     'assets/vendor/ace-builds/src-noconflict/mode-javascript.js',
     'assets/vendor/jroff/dist/jroff.js',
-    'assets/js/**/_*.js',
-    'assets/js/main.js'
+    'assets/vendor/essential.js/essential.js',
+    'assets/js/ace-modes/groff.js',
+    'assets/js/main.js',
+    'assets/js/services/*.js',
+    'assets/js/behaviors/*.js'
   ];
 
   grunt.initConfig({
