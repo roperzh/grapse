@@ -1,0 +1,27 @@
+// -------------------------------------------
+//   Groff output
+// -------------------------------------------
+
+.groff-output {
+  padding: 20px 15px;
+
+  > p:first-of-type {
+    @include clearfix();
+
+    margin-bottom: 15px;
+
+    text-align: center;
+
+    span:first-child {
+      float: left;
+    }
+
+    span:last-child {
+      float: right;
+    }
+  }
+
+  h2 {
+    margin: 15px 0;
+  }
+}
