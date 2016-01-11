@@ -2,4 +2,3 @@ node_modules
 assets/vendor
 assets/build
 dist
-deploy.sh
