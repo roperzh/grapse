@@ -7,11 +7,9 @@ ace.define('ace/mode/matching_brace_outdent', function(require, exports, module)
 
   (function() {
 
-    this.checkOutdent = function(line, input) {
-    };
+    this.checkOutdent = function(line, input) {};
 
-    this.autoOutdent = function(doc, row) {
-    };
+    this.autoOutdent = function(doc, row) {};
 
     this.$getIndent = function(line) {
       return line.match(/^\s*/)[0];
@@ -30,18 +28,29 @@ ace.define('ace/mode/groff_highlight_rules', function(require, exports, module) 
 
   var GroffHighlightRules = function() {
     this.$rules = {
-      'start': [ {
+      'start': [{
         token: 'comment',
-        regex: '(?:^\.|\\s)\\\\\"[\\s\\S]*$'
-      },{
+        regex: /(?:^\.|\s)\\\"[\s\S]*$/
+      }, {
         token: 'keyword.bold',
         regex: /^\.\S+/,
         next: 'parameter'
       }],
       'parameter': [{
-        token: 'variable',
-        regex: '[^(?:^\.|\\s)\\\\\"[\\s\\S]*$]',
+        token: 'comment',
+        regex: /(?:^\.|\s)\\\"[\s\S]*$/,
         next: 'start'
+      }, {
+        token: 'variable',
+        regex: /.$/,
+        next: 'start'
+      }, {
+        token: 'text',
+        regex: /^[^.]/,
+        next: 'start'
+      }, {
+        token: 'variable',
+        regex: /./
       }]
     };
   };
