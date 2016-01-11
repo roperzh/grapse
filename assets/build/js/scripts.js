@@ -23119,11 +23119,9 @@ exports.Mode = Mode;
 
   (function() {
 
-    this.checkOutdent = function(line, input) {
-    };
+    this.checkOutdent = function(line, input) {};
 
-    this.autoOutdent = function(doc, row) {
-    };
+    this.autoOutdent = function(doc, row) {};
 
     this.$getIndent = function(line) {
       return line.match(/^\s*/)[0];
@@ -23143,17 +23141,28 @@ ace.define('ace/mode/groff_highlight_rules', function(require, exports, module) 
   var GroffHighlightRules = function() {
     this.$rules = {
       'start': [{
+        token: 'comment',
+        regex: /(?:^\.|\s)\\\"[\s\S]*$/
+      }, {
         token: 'keyword.bold',
         regex: /^\.\S+/,
         next: 'parameter'
-      }, {
-        token: 'comment',
-        regex: '(?:^|\\s)\\\\\"[\\s\\S]*$'
       }],
       'parameter': [{
-        token: 'variable',
-        regex: '.+',
+        token: 'comment',
+        regex: /(?:^\.|\s)\\\"[\s\S]*$/,
         next: 'start'
+      }, {
+        token: 'variable',
+        regex: /.$/,
+        next: 'start'
+      }, {
+        token: 'text',
+        regex: /^[^.]/,
+        next: 'start'
+      }, {
+        token: 'variable',
+        regex: /./
       }]
     };
   };
@@ -23210,12 +23219,17 @@ ace.define('ace/mode/groff', function(require, exports, module) {
 document.addEventListener('DOMContentLoaded', function() {
   var editor = ace.edit("editor");
   var generator = new Jroff.HTMLGenerator();
+  var preview = document.getElementById('result');
 
   editor.setTheme("ace/theme/chrome");
   editor.getSession().setMode("ace/mode/groff");
 
-  editor.getSession().on('change', function(e) {
+  editor.getSession().on('change', refreshPreview);
+
+  function refreshPreview () {
     var result = generator.generate(editor.getValue(), 'doc');
-    document.getElementById('result').innerHTML = result;
-  });
+    preview.innerHTML = result;
+  };
+
+  refreshPreview();
 });
