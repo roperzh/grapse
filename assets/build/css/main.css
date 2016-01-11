@@ -390,7 +390,7 @@ figure {
   display: inline-block; }
 
 [role="banner"] {
-  background-color: #212433;
+  background-color: #373D49;
   height: 50px; }
   [role="banner"] .banner-title {
     color: white; }
@@ -424,4 +424,25 @@ figure {
   border: 1px solid #E8E8E8; }
   .code-box .code-box-header {
     padding: 5px 30px 5px;
-    border-bottom: 1px solid #E8E8E8; }
+    border-bottom: 1px solid #E8E8E8;
+    color: #A0AABF;
+    text-transform: uppercase;
+    font-size: 16px; }
+
+.groff-output {
+  padding: 20px 15px; }
+  .groff-output > p:first-of-type {
+    margin-bottom: 15px;
+    text-align: center; }
+    .groff-output > p:first-of-type:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    .groff-output > p:first-of-type span:first-child {
+      float: left; }
+    .groff-output > p:first-of-type span:last-child {
+      float: right; }
+  .groff-output h2 {
+    margin: 15px 0; }
