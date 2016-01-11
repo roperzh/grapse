@@ -23232,4 +23232,5 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   refreshPreview();
+  refreshPreview();
 });
