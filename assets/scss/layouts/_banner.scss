@@ -3,10 +3,34 @@
 // -------------------------------------------
 
 [role="banner"] {
+  @include clearfix();
+
   background-color: $main-bg-color;
   height: $banner-height;
+  padding: 0 15px;
 
   .banner-title {
-    color: white;
+    display: inline-block;
+    line-height: $banner-height;
+
+    background-size: cover;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+    letter-spacing: 3px;
+  }
+
+  .icons-bar {
+    float: right;
+    line-height: $banner-height;
+
+    .icon-github {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+
+      background-size: cover;
+      vertical-align: middle;
+    }
   }
 }

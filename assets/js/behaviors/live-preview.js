@@ -10,7 +10,13 @@ Grapse.Behaviors.LivePreview = Essential.Behavior.extend({
   },
 
   channels: {
-    'editor:changed': 'refreshChannel'
+    'editor:changed': 'refreshChannel',
+    'macroLibrary:changed': 'setMacroLib'
+  },
+
+  setMacroLib: function(e) {
+    this.parser.setMacroLib(e.detail.macroLib);
+    this.refresh(this.lastParsedText);
   },
 
   refreshChannel: function(e) {
@@ -18,6 +24,7 @@ Grapse.Behaviors.LivePreview = Essential.Behavior.extend({
   },
 
   refresh: function(text) {
+    this.lastParsedText = text;
     this.el.innerHTML = this.parser.parseGroff(text);
   }
 });

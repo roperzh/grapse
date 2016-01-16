@@ -2,3 +2,4 @@ node_modules
 assets/vendor
 assets/build
 dist
+.DS_Store

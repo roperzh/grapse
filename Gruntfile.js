@@ -100,7 +100,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'assets/img',
           src: ['*.svg', '*.png'],
-          dest: "assets/css/icons"
+          dest: '<%= distPath %>/css/icons'
         }],
         options: {
           enhanceSVG: true
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           server: {
-            baseDir: "./"
+            baseDir: './'
           },
           files: ['<%= distPath %>/css/main.css', '<%= distPath %>/js/scripts.js', 'index.html'],
           watchTask: true
@@ -137,6 +137,15 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      img: {
+        files: [
+          'assets/img/*.svg'
+        ],
+        tasks: ['grunticon'],
+        options: {
+          spawn: false
+        }
       }
     },
     copy: {
@@ -151,11 +160,12 @@ module.exports = function(grunt) {
 
   // Register tasks
   grunt.registerTask('default', [
-    "browserSync",
-    "watch"
+    'browserSync',
+    'watch'
   ]);
 
   grunt.registerTask('dev', [
+    'grunticon',
     'jshint',
     'sass',
     'autoprefixer:dev',

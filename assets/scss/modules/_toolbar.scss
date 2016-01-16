@@ -5,6 +5,27 @@
 .toolbar {
   $height: $banner-height - 10px;
 
+  @include clearfix();
+
   height: $height;
+  padding: 0 15px;
   line-height: $height;
+
+  .switch, .word-count {
+    float: right;
+    margin-left: 15px;
+  }
+
+  .switch {
+    padding-top: 10px;
+  }
+
+  .word-count {
+    font-size: 14px;
+
+    .word-count-label {
+      color: $secondary-text-color;
+      text-transform: uppercase;
+    }
+  }
 }

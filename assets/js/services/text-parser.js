@@ -8,6 +8,10 @@ Grapse.Services.TextParser = Proto.extend({
     this.macroLib = 'doc';
   },
 
+  setMacroLib: function(macroLib) {
+    this.macroLib = macroLib;
+  },
+
   parseGroff: function(text) {
     return this.generator.generate(text, this.macroLib);
   }

@@ -1,0 +1,81 @@
+// -------------------------------------------
+//   Switch
+// -------------------------------------------
+
+.switch {
+  $switch-height: 20px;
+  $switch-width: $switch-height * 2;
+  $padding: 2px;
+
+  @include clearfix();
+
+  position: relative;
+  max-height: $switch-height;
+  line-height: $switch-height;
+
+  .switch-label {
+    float: left;
+    padding: 0 5px;
+    line-height: $switch-height;
+
+    font-size: 14px;
+    color: black;
+    text-transform: uppercase;
+  }
+
+  .cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+
+  .cmn-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    float: left;
+    line-height: $switch-height;
+  }
+
+  .cmn-toggle-round-flat + label {
+    padding: $padding;
+    width: $switch-width;
+    height: $switch-height;
+    background-color: $main-border-color;
+    border-radius: $switch-width;
+    transition: background 0.4s;
+  }
+
+  .cmn-toggle-round-flat + label:before,
+  .cmn-toggle-round-flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+  }
+
+  .cmn-toggle-round-flat + label:before {
+    top: $padding;
+    left: $padding;
+    bottom: $padding;
+    right: $padding;
+    background-color: #fff;
+    border-radius: $switch-width;
+    transition: background 0.4s;
+  }
+
+  .cmn-toggle-round-flat + label:after {
+    top: $padding * 2;
+    left: $padding * 2;
+    bottom: $padding * 2;
+    width: $switch-width / 2;
+    background-color: $main-border-color;
+    border-radius: $switch-width;
+    transition: transform 0.4s;
+  }
+
+  .cmn-toggle-round-flat:checked + label:after {
+    transform: translateX(#{$switch-width - ($padding * 14)});
+  }
+}
