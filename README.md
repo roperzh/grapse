@@ -2,6 +2,8 @@
 
 *man pages online editor*
 
+Grapse is heavily based on [Jroff](https://github.com/roperzh/jroff)
+
 ##Contributing:
 
 ### Dependencies:
